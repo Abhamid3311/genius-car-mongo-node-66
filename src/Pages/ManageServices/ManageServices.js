@@ -2,12 +2,13 @@ import React from 'react';
 import useServices from '../../hooks/useServices';
 
 
+
 const ManageServices = () => {
     const [services, setServices] = useServices();
     const handleDelete = id => {
         const procced = window.confirm('You want to delete?');
         if (procced) {
-            const url = `http://localhost:5000/service/${id}`;
+            const url = `https://secure-woodland-22929.herokuapp.com/service/${id}`;
             fetch(url, {
                 method: 'DELETE'
             })

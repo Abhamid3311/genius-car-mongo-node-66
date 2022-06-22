@@ -7,7 +7,7 @@ const AddService = () => {
         console.log(data);
 
         //send to server
-        const url = `http://localhost:5000/service/`;
+        const url = `https://secure-woodland-22929.herokuapp.com/service/`;
         fetch(url, {
             method: 'POST',
             headers: {
@@ -15,7 +15,7 @@ const AddService = () => {
             },
             body: JSON.stringify(data)
         })
-            .then(res => res.json()) 
+            .then(res => res.json())
             .then(result => console.log(result))
     };
     return (

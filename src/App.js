@@ -1,4 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 import './App.css';
 import About from './Pages/About/About';
 import AddService from './Pages/AddService/AddService';
@@ -12,6 +13,8 @@ import ServiceDetail from './Pages/ServiceDetail/ServiceDetail';
 import Footer from './Pages/Shared/Footer/Footer';
 import Header from './Pages/Shared/Header/Header';
 import NotFound from './Pages/Shared/NotFound/NotFound';
+import 'react-toastify/dist/ReactToastify.css';
+import Order from './Pages/Order/Order';
 
 function App() {
   return (
@@ -24,24 +27,34 @@ function App() {
         <Route path="/about" element={<About></About>}></Route>
         <Route path="/login" element={<Login></Login>}></Route>
         <Route path="/register" element={<Register></Register>}></Route>
-        <Route path="/checkout" element={
+        <Route path="/checkout/:serviceId" element={
           <RequireAuth>
             <Checkout></Checkout>
           </RequireAuth>
         }></Route>
+
         <Route path="/manage" element={
           <RequireAuth>
             <ManageServices></ManageServices>
           </RequireAuth>
         }></Route>
+
+        <Route path="/order" element={
+          <RequireAuth>
+            <Order></Order>
+          </RequireAuth>
+        }></Route>
+
         <Route path="/addservice" element={
           <RequireAuth>
             <AddService></AddService>
           </RequireAuth>
         }></Route>
+        
         <Route path="*" element={<NotFound></NotFound>}></Route>
       </Routes>
       <Footer></Footer>
+      <ToastContainer></ToastContainer>
     </div>
   );
 }
